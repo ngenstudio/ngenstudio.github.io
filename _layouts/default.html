@@ -10,7 +10,7 @@
     <title>{{ site.title }} | Abderrahmane Ayad's Digital Portfolio</title>
     <meta name="description" content="{{ site.description }}">
 
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@{{ site.twitter_username }}">
@@ -27,37 +27,64 @@
     <meta name="description" content="Abderrahmane Ayad's Digital Portfolio">
     <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 
+
+    <style>
+      html,
+      body {
+	height: 100%;
+      }
+      canvas {
+	display: block;
+	vertical-align: bottom;
+	height: 100%;
+      }
+      #header-particles {
+	background: #02030f url(/images/wallpaper-2910790.jpg) no-repeat center center;
+	background-size: cover;
+	position: relative;
+	min-height: 590px;
+	padding-top: 20px;
+      }
+    </style>
+
   </head>
 
   <body>
 
-    <header class="page-head  page-head--masthead">
+    <header id="header-particles" class="page-head  page-head--masthead">
 
       <div class="o-wrapper">
 
 	<nav class="site-nav">
 
-	  <a href="{{ site.baseurl }}/">
+	  <a class="c-logo--tmp" href="{{ site.baseurl }}/">
 	    <!--put svg logo in here-->
-	    {{ site.title }}
+	    N
 	  </a>
 
 	  <ul class="site-nav__list">
-	    <li class="site-nav__item"><a href="/about/" class="site-nav__link">About</a></li>
-	    <li class="site-nav__item"><a href="/about/" class="site-nav__link">About</a></li>
-	    <li class="site-nav__item"><a href="/about/" class="site-nav__link">About</a></li>
-	    <li class="site-nav__item"><a href="/about/" class="site-nav__link">About</a></li>
+	    <li class="site-nav__item u-1/2"><a href="/about/" class="site-nav__link">About</a></li
+	    ><li class="site-nav__item u-1/2"><a href="/about/" class="site-nav__link">Case Studies</a></li
+	    ><li class="site-nav__item u-1/2"><a href="/about/" class="site-nav__link">Speaking</a></li
+	    ><li class="site-nav__item u-1/2"><a href="/about/" class="site-nav__link">Hire Me</a></li>
 	  </ul>
 
 	</nav>
 
-	<h1 class="page-head__text">Software Engineer</h1>
-
       </div><!-- /.o-wrapper -->
+
+      <div class="c-page-head__desc">
+
+	<div class="c-avatar"></div>
+
+	<h1 class="page-head__text">Full Stack Engineer</h1>
+
+      </div>
 
     </header>
 
-    <section class="" id="section:technologies">
+    <section class="section  section-technology " id="section:technologies">
+
     
       <div class="o-wrapper  o-wrapper--wide">
       
@@ -66,23 +93,24 @@
 	<ul class="technology-list">
 
 	  <li class="technology-list__item">
-	    <img src="">
+	    <img width="84" src="http://elm-lang.org/assets/logo.svg">
 	  </li>
 
 	  <li class="technology-list__item">
-	    <img src="">
+	    <img width="84" src="http://elm-lang.org/assets/logo.svg">
+	    <!--<img src="/images/elixir-logo.png">-->
 	  </li>
 
 	  <li class="technology-list__item">
-	    <img src="">
+	    <img width="84" src="http://elm-lang.org/assets/logo.svg">
 	  </li>
 
 	  <li class="technology-list__item">
-	    <img src="">
+	    <img width="84" src="http://elm-lang.org/assets/logo.svg">
 	  </li>
 
 	  <li class="technology-list__item">
-	    <img src="">
+	    <img width="84" src="http://elm-lang.org/assets/logo.svg">
 	  </li>
 
 	</ul>
@@ -190,11 +218,127 @@
     </section><!-- /#section:about -->
 
 
-    <script>
+    <!--<script>
       window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
       ga('create','UA-86307789-1','auto');ga('send','pageview')
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    -->
+
+    <script src="https://raw.githubusercontent.com/VincentGarreau/particles.js/master/particles.js"></script>
+    <script>
+     particlesJS('header-particles', {
+"particles": {
+    "number": {
+      "value": 160,
+      "density": {
+        "enable": true,
+        "value_area": 800
+      }
+    },
+    "color": {
+      "value": "#ffffff"
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 5
+      },
+      "image": {
+        "src": "img/github.svg",
+        "width": 100,
+        "height": 100
+      }
+    },
+    "opacity": {
+      "value": 1,
+      "random": true,
+      "anim": {
+        "enable": true,
+        "speed": 1,
+        "opacity_min": 0,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 3,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 4,
+        "size_min": 0.3,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": false,
+      "distance": 150,
+      "color": "#ffffff",
+      "opacity": 0.4,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 1,
+      "direction": "none",
+      "random": true,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 600
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": false,
+        "mode": "grab"
+      },
+      "onclick": {
+        "enable": false,
+        "mode": "repulse"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 911.0306633741695,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 250,
+        "size": 0,
+        "duration": 2,
+        "opacity": 0,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 400,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true	
+            
+    }); 
+    </script>
 
   </body>
 
