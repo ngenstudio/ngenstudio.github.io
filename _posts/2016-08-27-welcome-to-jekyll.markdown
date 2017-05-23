@@ -1,25 +1,166 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "Improving Perceived Performance with Multiple Background Images"
 date:   2016-08-27 15:05:21 +0100
 categories: jekyll update
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+I’m on a train right now, which means the wifi is awful. A lot of sites are
+refusing to load at all, and those that do have lots of images missing, leaving
+big blank holes in their web pages. Most of the images, thankfully, aren’t
+critical to understanding the content I’m looking for, but their absence does
+remind me that I’m waiting for something else to arrive, and in many cases it is
+perceived performance that is more important than the actual performance itself.
+This gave me a little idea.
 
-To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+A while back, I was consulting on a very high profile and very highly trafficked
+campaign website for a client that I’m, unfortunately, not allowed to name. I
+was brought in mid way through development to help make  things _fast_.
 
-Jekyll also offers powerful support for code snippets:
+The site featured a very large masthead image that, even when optimised, took a
+little while to load. I did a bunch of stuff in order to prefetch the image,
+fire off its request earlier, etc., but one of the simplest techniques I
+employed was to apply the image’s average colour as a `background-color`, so
+that the user wasn’t looking at a huge white space whilst the image loaded. This
+improved perceived performance dramatically, and was and incredibly low-effort
+implementation:
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
+
+{% highlight elixir %}
+defmodule Person do
+  
+  def get_age(year) do
+    2016 - year
+  end
+
 end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
 {% endhighlight %}
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
 
-[jekyll-docs]: http://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+{% highlight css %}
+.masthead {
+  background-image: url(/img/masthead.jpg);
+  background-color: #3d332b;
+}
+{% endhighlight %}
+
+
+1. Open the image in Photoshop
+2. Filter » Blur » Average
+3. Use the Eyedropper to sample the block of colour that is left
+4. Apply that colour as a `background-color`:
+
+   {% highlight css %}
+   .masthead {
+     background-image: url(/img/masthead.jpg);
+     background-color: #3d332b;
+   }
+   {% endhighlight %}
+
+This is a technique that I also use on this site’s homepage, on my very own
+masthead: if the image is taking too long to load, show the user a solid colour.
+However, just now on the train, I visited my own site and saw this:
+
+<figure>
+  <img src="http://csswizardry.com/wp-content/uploads/2016/10/screenshot-missing-image.png" alt="" />
+  <figcaption><a href="http://csswizardry.com/wp-content/uploads/2016/10/screenshot-missing-image-full.png">View full size/quality (104KB)</a></figcaption>
+</figure>
+
+The image isn’t actually content-critical, so it doesn’t matter that it hasn’t
+loaded, but—whilst probably better looking than my face—it’s still pretty
+jarring: it’s just a big, flat, soulless lump of colour. How can we improve it?
+
+## CSS Gradients and Multiple Backgrounds
+
+Very simply put, I wanted to make a rough approximation of the photograph in a
+CSS gradient. I can’t stress the words _rough approximation_ enough here: we’re
+literally talking about a few blobs of similar average colours. I was then going
+to apply this as a `background-image` on the image itself, only: oh no! This
+image already _is_ a background image. Not to worry, we’ve been able to define
+multiple backgrounds on the same element [since
+IE9](http://caniuse.com/#feat=multibackgrounds). We can define the actual image
+and its gradient approximation in one go, in one declaration.
+
+This means that, if the browser has the CSS,
+
+1. it can paint the CSS approximation;
+2. it can make the request for the actual image, which can make its way over the
+   network in its own time.
+
+Read more about [multiple backgrounds on
+MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Background_and_Borders/Using_CSS_multiple_backgrounds).
+
+## Making the Approximation
+
+To get my CSS-blob version of my masthead, I opened it up in Photoshop and
+divided it up into regions of colour. Because most of the objects in this image
+run top to bottom, I made vertical slices. Very conveniently for me, those
+regions all occurred at 25% intervals:
+
+<figure>
+  <img src="http://csswizardry.com/wp-content/uploads/2016/10/screenshot-slices-before.jpg" alt="" />
+  <figcaption><a href="http://csswizardry.com/wp-content/uploads/2016/10/screenshot-slices-before-full.jpg">View full size/quality (140KB)</a></figcaption>
+</figure>
+
+I then selected each section individually and ran Filter » Blur » Average, which
+left me with this:
+
+<figure>
+  <img src="http://csswizardry.com/wp-content/uploads/2016/10/screenshot-slices-after.png" alt="" />
+  <figcaption><a href="http://csswizardry.com/wp-content/uploads/2016/10/screenshot-slices-after-full.png">View full size/quality (2KB)</a></figcaption>
+</figure>
+
+The next step was to sample each colour and plug them into a CSS gradient:
+
+{% highlight css %}
+linear-gradient(to right, #807363 0%, #251d16 50%, #3f302b 75%, #100b09 100%)
+{% endhighlight %}
+
+That looks like this:
+
+<div style="padding-top: 56.25%;
+            margin-bottom: 24px;
+            margin-bottom: 1.5rem;
+            background-image: linear-gradient(to right, #807363 0%, #251d16 50%, #3f302b 75%, #100b09 100%);">
+</div>
+
+All I need to do now is apply this as a second value of my `background-image`
+property:
+
+{% highlight css %}
+.page-head--masthead {
+  background-image: url(/img/css/masthead-large.jpg),
+  linear-gradient(to right, #807363 0%, #251d16 50%, #3f302b 75%, #100b09 100%);
+}
+{% endhighlight %}
+
+The stacking order of multiple backgrounds is such that the first value (in this
+case, an actual image) is the topmost image, then the next sits underneath that,
+and so on.
+
+This means that, if this image ever fails to load again, we see this:
+
+<figure>
+  <img src="http://csswizardry.com/wp-content/uploads/2016/10/screenshot-missing-image-after.png" alt="" />
+  <figcaption><a href="http://csswizardry.com/wp-content/uploads/2016/10/screenshot-missing-image-after-full.png">View full size/quality (144KB)</a></figcaption>
+</figure>
+
+Not a huge difference, but certainly less blunt than a completely flat image:
+it’s enough to add a little bit of texture and hint at the general composition
+of the missing images.
+
+## Practicality
+
+There is, as you can see, quite a lot of manual work involved in implementing
+this technique. Unless/until there’s a way to reliably automate this, I think
+it’s a technique best used in use cases just like mine: a very specific image
+with a very low rate of change.
+
+The next level down from this would be just taking the average colour of the
+image and applying that as a `background-color`. There’s no need for gradients
+and multiple backgrounds with that, but it does still require per-image
+intervention.
+
+However, I’m actually really happy with this as a way to provide something a
+little more substantial to users on poor network conditions. If your site has
+similar static images, I’d recommend experimenting with this technique yourself.
+

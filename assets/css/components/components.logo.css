@@ -1,0 +1,21 @@
+/**
+ * temporary logo class, before the svg
+ */
+
+.c-logo--tmp {
+  border: 1px solid;
+  text-decoration: none;
+  font-size: 44px;
+  font-weight: bold;
+  display: block;
+  float: left;
+  width: 64px;
+  height: 64px;
+  text-align: center;
+  color: #216869;
+
+  @nest .page-head--masthead & {
+    color: #FFF;
+  }
+
+}

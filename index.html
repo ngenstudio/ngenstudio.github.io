@@ -3,22 +3,299 @@ layout: default
 page-class: page--home
 ---
 
-<div class="home">
+    <header id="header-particles" class="page-head  page-head--masthead">
 
-  <h1 class="page-heading">Posts</h1>
+      <div class="o-wrapper">
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+	{% include nav.html %}
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title | escape }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
+      </div><!-- /.o-wrapper -->
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+      
+      <div class="c-page-head__desc">
 
-</div>
+	<div class="o-wrapper">
+
+	  <div class="c-avatar"></div>
+
+	  <h1 class="page-head__text">Abderrahmane Ayad</h1>
+	  <h2 class="u-h1 page-head__tagline"><span>Full Stack Engineer</span></h2>
+
+	</div>
+
+      </div>
+
+    </header>
+
+    <section class="section  section-technology " id="section:technologies">
+
+    
+      <div class="o-wrapper  o-wrapper--wide">
+      
+	<h1>Technologies</h1>
+
+	<ul class="technology-list  o-layout">
+
+	  <li class="technology-list__item  o-block  o-layout__item  u-1/3@desktop">
+	    <img class="technology__img  o-block__img" width="84" src="/images/elixir-logo.png">
+	    <h3 class="technology__title">Strategy</h3>
+	    <p class="technology__body">One of our most important jobs at the beginning of a project is to understand what business goals are driving the project.</p>
+	  </li
+
+	  ><li class="technology-list__item  o-block  o-layout__item  u-1/3@desktop">
+	    <img class="technology__img  o-block__img" width="84" src="/images/elixir-logo.png">
+	    <h3 class="technology__title">Design</h3>
+	    <p class="technology__body">Design is more than just pretty pixels. We believe that investing in great design is critical for the success of any product.</p>
+	    <!--<img src="/images/elixir-logo.png">-->
+	  </li
+
+	  ><li class="technology-list__item  o-block  o-layout__item  u-1/3@desktop">
+	    <img class="technology__img  o-block__img" width="84" src="/images/elixir-logo.png">
+	    <h3 class="technology__title">Ruby on Rails</h3>
+	    <p class="technology__body">We have put in nearly a decade of crafting Ruby on Rails applications. Our experience enables us to build your product the right way. </p>
+	  </li
+
+	  ><li class="technology-list__item  o-block  o-layout__item  u-1/3@desktop">
+	    <img class="technology__img  o-block__img" width="84" src="/images/elixir-logo.png">
+	    <h3 class="technology__title">Elixir & Phoenix</h3>
+	    <p class="technology__body">Staying on top of emerging technologies is crucial to any company. No one can deny the power of Elixir and Phoenix.</p>
+	  </li
+
+	  ><li class="technology-list__item  o-block  o-layout__item  u-1/3@desktop">
+	    <img class="technology__img  o-block__img" width="84" src="/images/elixir-logo.png">
+	    <h3 class="technology__title">Elixir & Phoenix</h3>
+	    <p class="technology__body">Staying on top of emerging technologies is crucial to any company. No one can deny the power of Elixir and Phoenix.</p>
+	  </li
+
+	  ><li class="technology-list__item  o-block  o-layout__item  u-1/3@desktop">
+	    <img class="technology__img  o-block__img" width="84" src="/images/elixir-logo.png">
+	    <h3 class="technology__title">Elixir & Phoenix</h3>
+	    <p class="technology__body">Staying on top of emerging technologies is crucial to any company. No one can deny the power of Elixir and Phoenix.</p>
+	  </li>
+
+	</ul>
+
+      </div>
+
+    </section><!-- /#section:technologies -->
+  
+
+    <section class="section section-work" id="section:work">
+    
+      <div class="o-wrapper  o-wrapper--wide">
+
+	<h1>Some Of My Recent Work</h1>
+
+	<ul class="work-list o-layout">
+
+	  <li class="o-layout__item  u-1/3@desktop">
+
+	    <div class="o-media">
+
+	      <img src="/images/work-shot-1.jpg">
+	    
+	      <h2 class="work__title">Morgate</h2>
+
+	      <div class="o-media__body  work__description">TalentSky needed someone at the helm of their design strategy to guide them in ideation and building a solid prototype for their exciting new product reimagining the professional profile and digital resume.</div>
+
+	    </div>
+	  
+	  </li
+
+	  ><li class="o-layout__item  u-1/3@desktop">
+
+	    <div class="o-media">
+
+	      <img src="/images/work-shot-2.jpg">
+	    
+	      <h2 class="work__title">Dealsina</h2>
+
+	      <div class="o-media__body  work__description">University is an amazing educational resource for product designers of all levels. We're contantly working to create engaging new experiences and content to rally and inspire the community.</div>
+
+	    </div>
+	  
+	  </li
+
+	  ><li class="o-layout__item  u-1/3@desktop">
+
+	    <div class="o-media">
+
+	      <img src="/images/work-shot-3.jpg">
+	    
+	      <h2 class="work__title">CligsCo</h2>
+
+	      <div class="o-media__body  work__description">LiveWorld is a brand management platform for monitoring engagement across various social networks. We created a refreshing new experience focused on accessibility and simple interactions.</div>
+
+	    </div>
+	  
+	  </li>
+
+	</ul>
+
+      </div><!-- /.o-wrapper -->
+
+    </section><!-- /#section:work -->
+
+
+    <section class="section section-about" id="section:about">
+    
+      <div class="o-wrapper">
+
+	<h1 class="">A Bit About Me</h1>
+      
+	  <div class="about__content">
+
+	    <p>My name is Abderrahmane AYAD. I love design, rock n' roll and quality sushi. I've been a designer for over 5+ years now and have gained a ton of experience working with talented teams of all kinds. I spend alot of my free time in coffee shops, bobbing to Spotify, sketching layouts and mashing keys as if Sublime Text were Street Fighter. If you're another designer or just appreciate design-y things, let's grab a beer sometime!
+	    </p>
+
+	    <p>Let's work on a project together. Or just say hello, if you prefer. </p>
+
+	  </div>
+
+	<ul class="contact-list  o-pack">
+	
+	  <li class="contact-list__item  o-pack__item">
+	    <h2>CONTACT :</h2> 
+	  </li>
+
+	  <li class="contact-list__item  o-pack__item">
+	    <a href="" class="contact-list__link">@NGENSTUDIO</a>
+	  </li>
+
+	  <li class="contact-list__item  o-pack__item">
+	    <a href="" class="contact-list__link">LINKED IN</a>
+	  </li>
+
+	  <li class="contact-list__item  o-pack__item">
+	    <a href="mailto:abderrahmane@ngenstudio.com" class="contact-list__link">EMAIL ME</a>
+	  </li>
+
+	</ul>
+
+      </div><!-- /.o-wrapper -->
+
+    </section><!-- /#section:about -->
+
+
+    <!--<script>
+      window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+      ga('create','UA-86307789-1','auto');ga('send','pageview')
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    -->
+
+    <script src="https://raw.githubusercontent.com/VincentGarreau/particles.js/master/particles.js"></script>
+    <script>
+     particlesJS('header-particles', {
+"particles": {
+    "number": {
+      "value": 160,
+      "density": {
+        "enable": true,
+        "value_area": 800
+      }
+    },
+    "color": {
+      "value": "#ffffff"
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 5
+      },
+      "image": {
+        "src": "img/github.svg",
+        "width": 100,
+        "height": 100
+      }
+    },
+    "opacity": {
+      "value": 1,
+      "random": true,
+      "anim": {
+        "enable": true,
+        "speed": 1,
+        "opacity_min": 0,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 3,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 4,
+        "size_min": 0.3,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": false,
+      "distance": 150,
+      "color": "#ffffff",
+      "opacity": 0.4,
+      "width": 1
+    },
+    "move": {
+      "enable": true,
+      "speed": 1,
+      "direction": "none",
+      "random": true,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 600
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": false,
+        "mode": "grab"
+      },
+      "onclick": {
+        "enable": false,
+        "mode": "repulse"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 911.0306633741695,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 250,
+        "size": 0,
+        "duration": 2,
+        "opacity": 0,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 400,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true	
+            
+    }); 
+    </script>
+

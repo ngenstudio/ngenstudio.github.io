@@ -1,0 +1,42 @@
+{
+  "name": "ngenstudio",
+  "version": "1.0.0",
+  "description": "The digital portfolio of Abderrahmane AYAD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngenstudio/ngenstudio.github.io.git"
+  },
+  "keywords": [
+    "portfolio",
+    "front-end",
+    "developer",
+    "full",
+    "stack",
+    "developer"
+  ],
+  "author": "Abderrahmane AYAD",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ngenstudio/ngenstudio.github.io/issues"
+  },
+  "homepage": "https://github.com/ngenstudio/ngenstudio.github.io#readme",
+  "dependencies": {
+    "cssnano": "^3.8.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-postcss": "^6.2.0",
+    "gulp-rename": "^1.2.2",
+    "lost": "^7.1.0",
+    "postcss-at-rules-variables": "0.0.25",
+    "postcss-cssnext": "^2.8.0",
+    "postcss-each": "^0.9.3",
+    "postcss-for": "^2.1.1",
+    "postcss-import": "^8.1.2",
+    "postcss-math": "0.0.5"
+  }
+}

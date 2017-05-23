@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<header class="page-head  post-header">
+
+  <div class="o-wrapper">
+
+    {% include nav.html %}
+
+  </div><!-- /.o-wrapper -->
+
+</header>
+
+<div class="o-wrapper">
+
+  <section class="post">
+
+    <time class="post__date" datetime="{{ page.date | date: "%Y-%m-%d"  }}">{{ page.date | date: "%-d %B, %Y"  }}</time>
+
+    <h1 class="post__title">{{ page.title }}</h1>
+  
+    <article class="post__body">
+    
+      {{ content }}
+
+    </article>
+  
+  </section>
+
+</div>

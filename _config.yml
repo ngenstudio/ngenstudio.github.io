@@ -29,3 +29,4 @@ github_username:  ngenstudio
 # Build settings
 markdown: kramdown
 theme: minima
+permalink: /:year/:month/:title/
